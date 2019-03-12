@@ -1,0 +1,77 @@
+<!doctype html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"/>
+    <link rel="styleheet" href="lib/style.css"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" ></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="lib/script.js"></script>
+    <script src="lib/angular_dataTable.js"></script>
+
+    <style>
+       .containerBox {width: 550px; height: 100%; overflow: auto; position: relative;}
+        th,.fixed-cell { background: #eee;}
+        .cross {position: relative; z-index: 1;}
+
+        .truncate {
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+      .table-example { background-color: #fff !important; border-collapse: separate !important; width:100%;table-layout: fixed; border-spacing: 0;}
+      .table-example caption { padding-bottom: 0.5em; }
+      .table-example th { border-bottom: 1px solid #d8dde6;border-top: 1px solid #d8dde6; background-color: #fff;  text-align: left; padding:7px 20px 7px 10px !important; }
+      .table-example td {white-space: nowrap; border-style: none;  border-bottom: 1px solid #d8dde6; padding:3px 20px 3px 10px !important; color: #16325c;}
+      .table-example tbody td:first-child::after { content: leader(". "); }
+      .colresizer{  border: 0px solid #c0c0c0 !important; background-color: #d8dde6 !important; } 
+    </style>
+  </head>
+
+  <body ng-app="plunker" ng-cloak>
+    <div ng-controller="MainCtrl">
+      <!--<pre>{{items|json}}</pre>-->
+          
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+              <input type="text" class="form-control" ng-model="searchListView" placeholder="Search table">
+            </div>
+          </div>
+          
+          <div class="containerBox fixed-column-table" fixed-columns="2" number-of-displayed-columns="4" >
+              <table aria-multiselectable="true" class="table-example" role="grid">
+                  <thead>
+                    <tr>
+                        <th class="col-resizer truncate"><a ng-click="sort('name')" title="Name"><i class="{{(sortKey != 'name')?'glyphicon glyphicon-sort':(reverse)?'glyphicon glyphicon-chevron-up':'glyphicon glyphicon-chevron-down'}}"></i>&nbsp;&nbsp;&nbsp;Name</a></th>
+                        <th class="col-resizer truncate"><a ng-click="sort('username')" title="username"><i class="{{(sortKey != 'username')?'glyphicon glyphicon-sort':(reverse)?'glyphicon glyphicon-chevron-up':'glyphicon glyphicon-chevron-down'}}"></i>&nbsp;&nbsp;&nbsp;User Name</a></th>
+                        <th class="col-resizer truncate"><a ng-click="sort('email')" title="email"><i class="{{(sortKey != 'email')?'glyphicon glyphicon-sort':(reverse)?'glyphicon glyphicon-chevron-up':'glyphicon glyphicon-chevron-down'}}"></i>&nbsp;&nbsp;&nbsp;email</a></th>
+                        <th class="col-resizer truncate"><a ng-click="sort('phone')" title="phone"><i class="{{(sortKey != 'phone')?'glyphicon glyphicon-sort':(reverse)?'glyphicon glyphicon-chevron-up':'glyphicon glyphicon-chevron-down'}}"></i>&nbsp;&nbsp;&nbsp;Phone</a></th>
+                        <th class="col-resizer truncate"><a ng-click="sort('address')" title="address"><i class="{{(sortKey != 'address')?'glyphicon glyphicon-sort':(reverse)?'glyphicon glyphicon-chevron-up':'glyphicon glyphicon-chevron-down'}}"></i>&nbsp;&nbsp;&nbsp;Address</a></th>
+                        <th class="col-resizer truncate"><a ng-click="sort('city')" title="city"><i class="{{(sortKey != 'city')?'glyphicon glyphicon-sort':(reverse)?'glyphicon glyphicon-chevron-up':'glyphicon glyphicon-chevron-down'}}"></i>&nbsp;&nbsp;&nbsp;City</a></th>
+                        <th class="col-resizer truncate"><a ng-click="sort('zipcode')" title="zipcode"><i class="{{(sortKey != 'email')?'glyphicon glyphicon-sort':(reverse)?'glyphicon glyphicon-chevron-up':'glyphicon glyphicon-chevron-down'}}"></i>&nbsp;&nbsp;&nbsp;Zip</a></th>
+                        <th class="col-resizer truncate"><a ng-click="sort('website')" title="website"><i class="{{(sortKey != 'phone')?'glyphicon glyphicon-sort':(reverse)?'glyphicon glyphicon-chevron-up':'glyphicon glyphicon-chevron-down'}}"></i>&nbsp;&nbsp;&nbsp;Website</a></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr dir-paginate="item in items|arcOrderBy:sortKey:!reverse|searchfilter:searchListView|itemsPerPage:5" pagination-id="tableView">
+                        <td class="truncate">{{item.name}}</td>
+                        <td class="truncate">{{item.username}}</td>
+                        <td class="truncate">{{item.email}}</td>
+                        <td class="truncate">{{item.phone}}</td>
+                        <td class="truncate">{{item.address.suite}} , {{item.address.street}}</td>
+                        <td class="truncate">{{item.address.city}}</td>
+                        <td class="truncate">{{item.address.zipcode}}</td>
+                        <td class="truncate">{{item.website}}</td>
+                    </tr>
+                  </tbody>
+              </table>
+            
+          </div>
+            <dir-pagination-controls max-size="7" direction-links="true" boundary-links="false" pagination-id="tableView">
+            </dir-pagination-controls>
+    </div>
+  </body>
+</html>

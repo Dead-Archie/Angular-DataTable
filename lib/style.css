@@ -1,0 +1,29 @@
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
+}
+
+h1,
+p {
+    font-family: sans-serif;
+}
+
+.containerBox {width: 450px; height: 100%; overflow: auto; position: relative;}
+th,.fixed-cell { background: #eee;}
+.cross {position: relative; z-index: 1;}
+
+.truncate {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.table-example { background-color: #fff !important; border-collapse: separate !important; width:100%;}
+.table-example caption { padding-bottom: 0.5em; }
+.table-example th { border-bottom: 1px solid #d8dde6;border-top: 1px solid #d8dde6; background-color: #fff;  text-align: left; padding:7px 20px 7px 10px !important; }
+.table-example td {white-space: nowrap; border-style: none;  border-bottom: 1px solid #d8dde6; padding:3px 20px 3px 10px !important; color: #16325c;}
+.table-example tbody td:first-child::after { content: leader(". "); }
