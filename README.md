@@ -42,7 +42,7 @@ Data have multiple features like ,
   
 ### pagination & Pagination Information 
   `dir-pagination-controls` directive for displaying pagination and pagination information. It has 4 attributes 
-    * `max-size="7"` // it indicates number of nodes. E.g. for max-size=”7” .
+    *  `max-size="7"` // it indicates number of nodes. E.g. for max-size=”7” .
 		Total nodes including (…) is 7. By default max-size is set by 5. If developer write max-size<5, then by default it will take max-size=”5” .
     *  `direction-links="true"` // to show “Prev” & “next” button. For hide make it false.
     *  `boundary-links="false"` // It indicates anchor tag for current page number.
