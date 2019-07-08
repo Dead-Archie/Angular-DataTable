@@ -24,13 +24,14 @@ Data have multiple features like ,
   For this features, add `fixed-column-table` class in container Div. We are using class type directive. For fixed Column developer has to mention 2 attributes..
   *	`fixed-columns="2"` //This number will indicate the number of column to be fixed from left. Fixed column is only possible from left to Right.
   * `number-of-displayed-columns="4"`  // This number indicated the number of column to be shown on a data Table. suppose you have 15 columns in your Table and 3 are fixed-columns(`fixed-columns="3"`), and you mentioned `number-of-displayed-columns="6"` : For this case,
-	for 6 columns ,table width will be 100%.
+	for __6 columns__ ,table width will be __100%.__
 	for rest of the columns i.e. __15-6 = 9__ it will take __extra 100px of each column__ , so remaining width become __900px.__
 	now the total table width become __width:(calc(100% + 900 px));__
 
   
 ### Column Reszing
-       For this features, Add `Class="col-resizer"`> in table headers. After adding class Column resize will work.(for desktop Only , for Ipad it will not Work)
+   For this features, Add `Class="col-resizer"`> in table headers. After adding class Column resize will work.(for desktop Only , for Ipad it will not Work)
+       
  
  __columns have some default configuration.__ 
 
@@ -40,9 +41,16 @@ Data have multiple features like ,
 
   
 ### pagination & Pagination Information 
-      `dir-pagination-controls` directive for displaying pagination and pagination information. It has 4 attributes 
-		* `max-size="7"` // it indicates number of nodes. E.g. for max-size=”7” .
-		  Total nodes including (…) is 7. By default max-size is set by 5. If developer write max-size<5, then by default it will take max-size=”5” .
-		* `direction-links="true"` // to show “Prev” & “next” button. For hide make it false.
-		* `boundary-links="false"` // It indicates anchor tag for current page number.
-		* `pagination-id="tableView"` // Pagination-id is unique Id for every dataTable. It is an optional field It’s 			map with the pagination with dataTable. Developer has to mention pagination-id 2 times, In dir-pagination-controls & dir-paginate.
+  `dir-pagination-controls` directive for displaying pagination and pagination information. It has 4 attributes 
+	* `max-size="7"` // it indicates number of nodes. E.g. for max-size=”7” .
+		Total nodes including (…) is 7. By default max-size is set by 5. If developer write max-size<5, then by default it will take max-size=”5” .
+	* `direction-links="true"` // to show “Prev” & “next” button. For hide make it false.
+	* `boundary-links="false"` // It indicates anchor tag for current page number.
+	* `pagination-id="tableView"` // Pagination-id is unique Id for every dataTable. It is an optional field It’s 			map with the pagination with dataTable. Developer has to mention pagination-id 2 times, In dir-pagination-controls & dir-paginate.
+	
+	
+### Sorting
+   For this feature `arcOrderBy` is using . For every sorting we are passing column-name in sortKey as a Boolean `true/false` value.
+
+### Items Per Page
+  This attribute is used for the __number of rows__ to display in a page. E.g. For above snippet  it is deafalutly set by 5 (5 rows per page).
