@@ -15,28 +15,34 @@ Data have multiple features like ,
 * pagination
 * Pagination Information
 * Sorting
+* Items per Page
 
 ### Comma separated Search 
-  For this features, add `searchfilter` in __ng-repeat__ as filter. 
-### Fixed Header & Fixed Column 
-  * For this features, add `fixed-column-table` class in container `Div`
+  For this feature, `searchfilter` is using . `searchListView` is the ng-model of input search box. SeachFIlter is added of dataTableDirective. Resource page.
   
-  * `fixed-columns` to display number for the fixed column in dataTable. Value should be integer. 
-  
-  * `number-of-displayed-columns` to display column according to the numbers of columns.
+### Fixed Header & Fixed Column
+  For this features, add `fixed-column-table` class in container Div. We are using class type directive. For fixed Column developer has to mention 2 attributes..
+  *	`fixed-columns="2"` //This number will indicate the number of column to be fixed from left. Fixed column is only possible from left to Right.
+  * `number-of-displayed-columns="4"`  // This number indicated the number of column to be shown on a data Table. suppose you have 15 columns in your Table and 3 are fixed-columns(`fixed-columns="3"`), and you mentioned `number-of-displayed-columns="6"` : For this case,
+	for 6 columns ,table width will be 100%.
+	for rest of the columns i.e. __15-6 = 9__ it will take __extra 100px of each column__ , so remaining width become __900px.__
+	now the total table width become __width:(calc(100% + 900 px));__
 
-  suppose you have 15 cloumns in your Table and 3 fixed-columns, and you mentioned `number-of-displayed-columns='6'` : For this case,
-  
-  * for 6 columns(`number-of-displayed-columns`) *table* will have 100% width. 
-  * for rest of the column i.e. `15-6 = 9` it will take extra 100px of each column , so remaining width become 900px. 
-  * now the total *table* width become `width:(calc(100% + 900 px));`
   
 ### Column Reszing
-  Add `col-resizer` class in table headers.
+       For this features, Add `Class="col-resizer"`> in table headers. After adding class Column resize will work.(for desktop Only , for Ipad it will not Work)
+ 
+ __columns have some default configuration.__ 
+
+  __COL_RESIZER_MIN_COL_WIDTH: 70,__ // minimum column resizing width
+  __ELEMENT_NODE_NAMES: ['TH', 'TD'],__
+  __EXTRA_COLUMN_WIDTH:100__ // minimum column width for extra column is used for fixed column(extra Column Width is required for fixed-column features )
+
   
 ### pagination & Pagination Information 
-  Add `dir-pagination-controls` directive for displaying pagination and pagination information. 
-  
-  * `max-size` : **integer** //to show pagintion node, e.g. `5` it will show like ` 1 ... 3 ... 100 `, for `7` it will show like `1 ... 2 3 4 ... 100`
-  * `direction-links` : **true** // to show _previous_ _next_ , to hide make it `false`.
-   
+      `dir-pagination-controls` directive for displaying pagination and pagination information. It has 4 attributes 
+		* `max-size="7"` // it indicates number of nodes. E.g. for max-size=”7” .
+		  Total nodes including (…) is 7. By default max-size is set by 5. If developer write max-size<5, then by default it will take max-size=”5” .
+		* `direction-links="true"` // to show “Prev” & “next” button. For hide make it false.
+		* `boundary-links="false"` // It indicates anchor tag for current page number.
+		* `pagination-id="tableView"` // Pagination-id is unique Id for every dataTable. It is an optional field It’s 			map with the pagination with dataTable. Developer has to mention pagination-id 2 times, In dir-pagination-controls & dir-paginate.
