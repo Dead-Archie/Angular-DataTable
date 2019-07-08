@@ -35,9 +35,9 @@ Data have multiple features like ,
  
  __columns have some default configuration.__ 
 
-  __COL_RESIZER_MIN_COL_WIDTH: 70,__ // minimum column resizing width
-  __ELEMENT_NODE_NAMES: ['TH', 'TD'],__
-  __EXTRA_COLUMN_WIDTH:100__ // minimum column width for extra column is used for fixed column(extra Column Width is required for fixed-column features )
+  * __COL_RESIZER_MIN_COL_WIDTH: 70,__ // minimum column resizing width
+  * __ELEMENT_NODE_NAMES: ['TH', 'TD'],__
+  * __EXTRA_COLUMN_WIDTH:100__ // minimum column width for extra column is used for fixed column(extra Column Width is required for fixed-column features )
 
   
 ### pagination & Pagination Information 
